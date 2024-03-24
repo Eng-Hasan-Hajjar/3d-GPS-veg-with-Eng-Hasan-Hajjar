@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عرض صورة ثلاثية الأبعاد مع تحديد القيمة من خلال ال Range</title>
+  <!-- تضمين مكتبة model-viewer -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
+  <style>
+    /* تخصيص النمط لعرض صورة ثلاثية الأبعاد */
+    model-viewer {
+      width: 800px;
+      height: 600px;
+      transform-style: preserve-3d; /* حفظ التدوير بالثلاثة أبعاد */
+    }
+
+    /* إخفاء المؤشر الافتراضي للماوس */
+    model-viewer::after {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- عنصر model-viewer لعرض الصورة ثلاثية الأبعاد -->
+  <model-viewer  style="border: solid black ;" src="French Fries Machines/Table End.glb" alt="صورة ثلاثية الأبعاد" camera-controls max-camera-orbit="0deg 90deg 0deg"></model-viewer>
+  
+  <!-- شريط التمرير (Range Slider) لتحديد قيمة الكاميرا -->
+  <input type="range" id="cameraRange" min="0" max="360" value="0" step="1" oninput="updateCameraOrbit(this.value)" />
+
+  <script>
+    // الدالة التي تقوم بتحديث قيمة max-camera-orbit بناءً على قيمة شريط التمرير
+    function updateCameraOrbit(value) {
+      const modelViewer = document.querySelector('model-viewer');
+      const maxCameraOrbit = `${value}deg 90deg 90deg`;
+      const minCameraOrbit = `${value}deg 90deg 90deg`;
+      modelViewer.setAttribute('max-camera-orbit', maxCameraOrbit);
+      modelViewer.setAttribute('min-camera-orbit', minCameraOrbit);
+    }
+  </script>
+</body>
+</html>
