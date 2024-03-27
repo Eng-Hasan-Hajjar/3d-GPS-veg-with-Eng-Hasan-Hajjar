@@ -27,6 +27,12 @@
   
   <!-- شريط التمرير (Range Slider) لتحديد قيمة الكاميرا -->
   <input type="range" id="cameraRange" min="0" max="360" value="0" step="1" oninput="updateCameraOrbit(this.value)" />
+<!-- شريط التمرير لتحديد سطوع الصورة -->
+<input type="range" id="brightnessRange" min="0" max="200" value="100" step="1" oninput="updateBrightness(this.value)" />
+
+<!-- شريط التمرير لتحديد درجة اللون -->
+<input type="range" id="hueRange" min="0" max="360" value="0" step="1" oninput="updateHue(this.value)" />
+
 
   <script>
     // الدالة التي تقوم بتحديث قيمة max-camera-orbit بناءً على قيمة شريط التمرير
@@ -37,6 +43,20 @@
       modelViewer.setAttribute('max-camera-orbit', maxCameraOrbit);
       modelViewer.setAttribute('min-camera-orbit', minCameraOrbit);
     }
+
+    // الدالة لتحديث سطوع الصورة
+function updateBrightness(value) {
+  const modelViewer = document.querySelector('model-viewer');
+  modelViewer.style.filter = `brightness(${value}%)`;
+}
+
+// الدالة لتحديث درجة اللون
+function updateHue(value) {
+  const modelViewer = document.querySelector('model-viewer');
+  modelViewer.style.filter = `hue-rotate(${value}deg)`;
+}
+
+
   </script>
 </body>
 </html>

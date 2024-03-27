@@ -6,6 +6,7 @@
   <title>عرض صورة ثلاثية الأبعاد مع تحديد القيمة من خلال ال Range</title>
   <!-- تضمين مكتبة model-viewer -->
   <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
+  <script type="module" src="asset/js/scriptHasan.js"></script>
   <style>
 	body{
 		position: relative;
@@ -13,7 +14,7 @@
     /* تخصيص النمط لعرض صورة ثلاثية الأبعاد */
     model-viewer {
       width: 800px;
-      height: 600px;
+      height: 400px;
       transform-style: preserve-3d; /* حفظ التدوير بالثلاثة أبعاد */
 	 
 	  
@@ -56,7 +57,7 @@ input[type="range"] {
 
 input[type="range"] {
 	color: #ef233c;
-	--thumb-height: 2.125em;
+	--thumb-height: 1.125em;
 	--track-height: 0.125em;
 	--track-color: rgba(0, 0, 0, 0.2);
 	--brightness-hover: 180%;
